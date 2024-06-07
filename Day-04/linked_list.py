@@ -143,6 +143,29 @@ class LinkedList:
 
         self.display()
 
+    def swapTheNodesAdj(self):
+        t1 = self.head
+        t2 = self.head.next
+        self.display()
+        self.head = t2
+        while t1 and t1.next:
+            print("before",t1.data,t2.data)
+
+            t1.next = t2.next
+            t2.next = t1
+
+
+            print("after",t1.data,t2.data)
+
+            t1=t1.next
+            t2=t1.next
+
+
+
+
+        self.display()
+
+
 
 
 
@@ -171,4 +194,5 @@ lc.display()
 
 # lc.lenghtOfLongestSubSequence()
 # lc.printAllPairs()
-lc.bubbleSort()
+# lc.bubbleSort()
+lc.swapTheNodesAdj()
