@@ -20,7 +20,6 @@ class Tree:
             root.left = self.createNode(root.left, val)
         return root
 
-
     def inorder(self, root):
         if root:
             self.inorder(root.left)
@@ -79,8 +78,6 @@ class Tree:
             return -root.data+self.addOddDatas(root.left)+self.addOddDatas(root.right)
 
         return self.addOddDatas(root.left)+self.addOddDatas(root.right)+root.data
-
-
 
     def heightOfTree(self, root):
         if not root:
@@ -146,7 +143,6 @@ class Tree:
         else:
             return self.depthOfTree(root.right,val,c+1)
 
-
     def left_view(self,node):
         l = []
         def view(root,level):
@@ -184,13 +180,59 @@ class Tree:
                 d[level]=root.data
             if level<0 and level in d and d[level] < root.data:
                 d[level]=root.data
-            if level>0 and level in d and d[level] < root.data:
 
             view(root.left,level+1)
             view(root.right,level-1)
         view(node,0)
         print(d)
 
+    def bfs(self,node):
+        d = defaultdict(list)
+        q = [(node,0)]
+
+        while q:
+            node,h = q.pop()
+
+            d[h].append(node.data)
+            if node.right:
+                q.append((node.right,h+1))
+            if node.left:
+                q.append((node.left,h+1))
+        print(d,q)
+
+    def top_view_bfs(self,node):
+        d = defaultdict(list)
+        q = [(node,0)]
+
+        while q:
+            node,h = q.pop()
+            d[h].append(node.data)
+            if node.right:
+                q.append((node.right,h+1))
+            if node.left:
+                q.append((node.left,h+1))
+        print(d,q)
+        l = []
+        for i in d:
+            l.append(d[i][0])
+        print(l)
+
+    def bottom_view_bfs(self,node):
+        d = defaultdict(list)
+        q = [(node,0)]
+
+        while q:
+            node,h = q.pop()
+            d[h].append(node.data)
+            if node.right:
+                q.append((node.right,h+1))
+            if node.left:
+                q.append((node.left,h+1))
+        print(d,q)
+        l = []
+        for i in d:
+            l.append(d[i][-1])
+        print(l)
 
 
 
@@ -201,12 +243,12 @@ tree.root = Node(10)
 for i in l:
     tree.createNode(tree.root,i)
 
-tree.inorder(tree.root)
+# tree.inorder(tree.root)
 # print()
 # tree.preorder(tree.root)
 # print()
 # tree.postorder(tree.root)
-print()
+# print()
 # print(tree.sumOfNodes(tree.root,0))
 # print(tree.addLikeFibnacc(tree.root))
 # print(tree.addEvenDatas(tree.root))
@@ -214,9 +256,13 @@ print()
 # print(tree.heightOfTree(tree.root))
 # print(tree.numberOfLeafNodes(tree.root))
 # print(tree.searchANodeInTree(tree.root,0))
-print(tree.depthOfTree(tree.root,3))
-print()
-# tree.left_view(tree.root)
-tree.right_view(tree.root)
+# print(tree.depthOfTree(tree.root,3))
+# print()
+# # tree.left_view(tree.root)
+# tree.right_view(tree.root)
 
-tree.top_view(tree.root)
+# tree.top_view(tree.root)
+
+tree.bfs(tree.root)
+tree.top_view_bfs(tree.root)
+tree.bottom_view_bfs(tree.root)
