@@ -139,7 +139,7 @@ d = {5:[(7,1),(3,2)],7:[(5,1),(4,5),(3,3)],4:[(7,5),(8,2),(2,2)],8:[(3,2),(4,2),
 # PrintMinCostPath(5,2)
 # PrintMaxCostPath(5,2)
 # bfs(5)
-# recusiveBFS(5)
+
 dijkstra(5,d)
 
 # g = {
