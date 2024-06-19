@@ -1,4 +1,4 @@
-def solveNQueens(self, n):
+def solveNQueens( n):
 
     def test(i, j, cols, left_d, right_d):
         return not (cols[j] or left_d[i+j] or right_d[i-j])
@@ -34,9 +34,9 @@ def solveNQueens(self, n):
     return sol
 
 
-n = int(input("Enter n value: "))
-m = int(input("Enter m value: "))
-#todo
+n = int(input())
+
+
 sol = solveNQueens(n)
 print(sol)
 print(len(sol))
